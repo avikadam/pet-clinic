@@ -31,7 +31,9 @@
 
 		<jacoco.version>0.8.5</jacoco.version>
      		<nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
-    		<spring-format.version>0.0.19</spring-format.version>
+    		<spring-format.version>0.0.19</spring-format.version
+		
+		<owsap-dependency-check.version>6.2.2</owsap-dependency-check.version>
 	</properties>
 
 	<dependencies>
@@ -305,6 +307,23 @@
 						<version>${webjars-bootstrap.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>${owsap-dependency-check.version}</version>
+				<configuration>
+				    <format>ALL</format>
+				    <failBuildOnCVSS>7</failBuildOnCVSS>
+				    <cveValidForHours>168</cveValidForHours>
+				</configuration>
+				<executions>
+				    <execution>
+					<goals>
+					    <goal>check</goal>
+					</goals>
+				    </execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
